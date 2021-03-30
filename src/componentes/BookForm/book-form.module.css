@@ -1,0 +1,34 @@
+.bookForm input:invalid, textarea:invalid {
+  background-color: #ffdddd !important;
+}
+
+.bookForm input,.bookForm textarea{
+  margin-bottom: 15px !important;
+}
+
+.bookForm label{
+  display: inline-block;
+  margin-bottom: 10px !important;
+  margin-right: 15px;
+}
+
+.bookForm:invalid {
+  border: 5px solid #ffdddd;
+}
+
+.bookForm input:valid, textarea:valid {
+  background-color: #ddffdd !important;
+}
+
+.bookForm:valid {
+  border: 5px solid #ddffdd;
+}
+
+.bookForm input:required, textarea:required {
+  border-color: #800000;
+  border-width: 3px;
+}
+
+.bookForm input:required:invalid, textarea:required:invalid {
+  border-color: #c00000;
+}
