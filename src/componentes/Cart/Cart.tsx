@@ -1,20 +1,18 @@
 import React, { ReactElement } from "react";
 import { Link } from "react-router-dom";
+import { useStore } from "../StoreContextProvider/StoreContextProvider";
 import Book from "../../types/Books";
-import { Actions } from "../../usereducer/store";
 import BookListItem from "../BookListItem/BookListItem";
 import CartButtons from "../CartButtons/CartButtons";
 
-interface Props {
-  cart: Book[];
-  dispatch: React.Dispatch<Actions>;
-}
 
-export default function Cart(props: Props): ReactElement {
+export default function Cart(): ReactElement {
+  const { store: { cart } } = useStore();
+
   const getEveryBookOnce = (): Book[] => {
     const books: Book[] = [];
     //Jedes Buch einmal im Array speichern
-    props.cart.forEach((book, i) => {
+    cart.forEach((book, i) => {
       let bookExists = false;
       books.forEach(el => {
         if (el.isbn === book.isbn)
@@ -36,7 +34,7 @@ export default function Cart(props: Props): ReactElement {
           ?
           books.map(book => (
             <BookListItem book={book} key={book.isbn} >
-              <CartButtons book={book} {...props} />
+              <CartButtons book={book} />
             </BookListItem>
           ))
           :

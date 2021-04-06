@@ -1,13 +1,10 @@
 import React, { ReactElement } from "react";
 import { NavLink } from "react-router-dom";
-import Book from "../../types/Books";
+import { useStore } from "../StoreContextProvider/StoreContextProvider";
 import SearchBar from "../SearchBar/SearchBar";
 
-interface Props {
-  cart: Book[];
-}
-
-export default function Navigation({ cart }: Props): ReactElement {
+export default function Navigation(): ReactElement {
+  const { store: { cart } } = useStore();
   return (
     <nav className="ui tabular menu">
       <NavLink to="/home" className="item">Home</NavLink>

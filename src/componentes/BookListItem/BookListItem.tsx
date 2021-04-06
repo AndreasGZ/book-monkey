@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import Book from "../../types/Books";
 
 interface Props {
@@ -12,7 +13,7 @@ export default function BookListItem(props: Props): ReactElement {
   const book = props.book;
   return (
     <>
-      <div className="item">
+      <Link to={`/books/${book.isbn}`} className="item">
         {/* Thumbnails.title im alt-Attribut einfügen
           Thumbnails.src im src-Attribut einügen */}
         < img className="ui tiny image"
@@ -20,7 +21,7 @@ export default function BookListItem(props: Props): ReactElement {
           src={book.thumbnails && book.thumbnails[0].url}
           onClick={() => { history.push(`/books/${book.isbn}`) }}
         />
-        <div className="content" onClick={() => { history.push(`/books/${book.isbn}`) }}>
+        <div className="content">
           <div className="header">
             {/* Buchtitel ausgeben */}
             {book.title}
@@ -45,7 +46,7 @@ export default function BookListItem(props: Props): ReactElement {
           </div>
         </div>
         {props.children && props.children}
-      </div >
+      </Link >
     </>
   )
 }

@@ -4,15 +4,9 @@ import LoadingSpinner from "../LoadingSpinner/loading-spinner";
 import bookApi from "../../shared/BookApi";
 import useBookApi from "../../hooks/useBookApi";
 import { useHistory, useParams } from "react-router-dom";
-import { Actions } from "../../usereducer/store";
 import CartButtons from "../CartButtons/CartButtons";
 
-interface Props {
-  cart: Book[];
-  dispatch: React.Dispatch<Actions>;
-}
-
-const BookDetails = (props: Props): ReactElement => {
+const BookDetails = (): ReactElement => {
   const { isbn } = useParams<{ isbn: string }>();
   const history = useHistory();
   const path = `/book/${isbn}`;
@@ -84,7 +78,7 @@ const BookDetails = (props: Props): ReactElement => {
               Edit book
             </button>
 
-            <CartButtons book={book} {...props} />
+            <CartButtons book={book} />
 
           </div>
           :
